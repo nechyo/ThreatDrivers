@@ -11,8 +11,6 @@ import numpy as np
 # Streamlit app configuration
 st.set_page_config(page_title='ThreatDrivers Dashboard', layout='wide')
 
-# Sidebar for user inputs
-
 collection_id = '06818046399c5674eeb31f66e8eda0265a4f8bb4d4cc00b2da3f5955ac171458'
 data_file = 'all_collection_metadata.json'
 
@@ -198,7 +196,7 @@ valid_signer_fig = px.bar(
     y='Valid Signer Name',
     x='Number of Valid Signatures',
     orientation='h',
-    title='File Signers',
+    title='Valid File Signers',
     color='Number of Valid Signatures',
 )
 st.plotly_chart(valid_signer_fig)
