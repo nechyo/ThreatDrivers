@@ -152,7 +152,7 @@ st.plotly_chart(detection_fig)
 # Plotting a bar chart for import library usage focusing on functions
 st.write("## Import Functions Usage")
 import_data = pd.DataFrame({
-    'Library Function': list(import_counts.keys()),
+    'Function Name': list(import_counts.keys()),
     'Number of Imports': list(import_counts.values())
 })
 import_data.sort_values(by=['Number of Imports'], axis=0, ascending=False, inplace=True)
