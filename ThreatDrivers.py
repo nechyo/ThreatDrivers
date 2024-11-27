@@ -111,7 +111,7 @@ for ioc in all_data:
     # Count imports and signers
     for import_item in import_list:
         library_name = import_item.get("library_name", "Unknown")
-        #if library_name != "ntoskrnl.exe": continue
+        if library_name != "ntoskrnl.exe": continue
         for imported_function in import_item.get("imported_functions"):
             import_counts[imported_function] = import_counts.get(imported_function, 0) + 1
 
