@@ -140,7 +140,7 @@ col2.metric("Detected Files", total_detected)
 col3.metric("Undetected Files", total_undetected)
 col4.metric("Average File Size (KB)", round(df['Size'].replace('N/A', np.nan).dropna().astype(int).mean() / 1024, 2))
 
-st.write("## Detection Visualization")
+st.write("## Detection")
 detection_fig = px.bar(
     x=['Detected', 'Undetected'], 
     y=[total_detected, total_undetected],
@@ -150,7 +150,7 @@ detection_fig = px.bar(
 st.plotly_chart(detection_fig)
 
 # Plotting a bar chart for import library usage focusing on functions
-st.write("## Import Library Usage Visualization")
+st.write("## Import Library Usage")
 import_data = pd.DataFrame({
     'Library Name': list(import_counts.keys()),
     'Number of Imports': list(import_counts.values())
@@ -168,7 +168,7 @@ import_fig = px.bar(
 st.plotly_chart(import_fig)
 
 # Plotting a bar chart for file signers focusing on signer names
-st.write("## File Signers Visualization")
+st.write("## File Signers")
 signer_data = pd.DataFrame({
     'Signer Name': list(signer_counts.keys()),
     'Number of Signatures': list(signer_counts.values())
@@ -185,7 +185,7 @@ signer_fig = px.bar(
 st.plotly_chart(signer_fig)
 
 # Creating a table for valid signers
-st.write("## Valid File Signers Visualization")
+st.write("## Valid File Signers")
 valid_signers_data = pd.DataFrame({
     'Valid Signer Name': list(vaild_signer_counts.keys()),
     'Number of Valid Signatures': list(vaild_signer_counts.values())
@@ -215,7 +215,7 @@ file_size_fig = px.histogram(
 st.plotly_chart(file_size_fig)
 
 # Plotting a bar chart for antivirus detection summary
-st.write("## Antivirus Detection Visualization")
+st.write("## Antivirus Detection")
 antivirus_data = pd.DataFrame({
     'Antivirus Engine': list(antivirus_counts_detected.keys()),
     'Detected': list(antivirus_counts_detected.values()),
