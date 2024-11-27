@@ -9,7 +9,7 @@ import os
 import numpy as np
 
 # Streamlit app configuration
-st.set_page_config(page_title='ThreatDrivers Collection Dashboard', layout='wide')
+st.set_page_config(page_title='ThreatDrivers Dashboard', layout='wide')
 
 # Sidebar for user inputs
 
@@ -141,12 +141,12 @@ col2.metric("Detected Files", total_detected)
 col3.metric("Undetected Files", total_undetected)
 col4.metric("Average File Size (KB)", round(df['Size'].replace('N/A', np.nan).dropna().astype(int).mean() / 1024, 2))
 
-st.write("## Detection Summary Visualization")
+st.write("## Detection Visualization")
 detection_fig = px.bar(
     x=['Detected', 'Undetected'], 
     y=[total_detected, total_undetected],
     labels={'x': 'Detection Status', 'y': 'Number of Files'},
-    title='Detection Summary',
+    title='Detection',
 )
 st.plotly_chart(detection_fig)
 
@@ -178,7 +178,7 @@ signer_fig = px.bar(
     y='Signer Name',
     x='Number of Signatures',
     orientation='h',
-    title='File Signers Summary',
+    title='File Signers',
     color='Number of Signatures',
 )
 st.plotly_chart(signer_fig)
@@ -196,7 +196,7 @@ valid_signer_fig = px.bar(
     y='Valid Signer Name',
     x='Number of Valid Signatures',
     orientation='h',
-    title='File Signers Summary',
+    title='File Signers',
     color='Number of Valid Signatures',
 )
 st.plotly_chart(valid_signer_fig)
