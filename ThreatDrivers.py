@@ -221,7 +221,6 @@ antivirus_data = pd.DataFrame({
     'Detected': list(antivirus_counts_detected.values()),
     'Undetected': list(antivirus_counts_undetected.values())
 })
-valid_signers_data.sort_values(by=['Detected'], axis=0, ascending=False, inplace=True)
 antivirus_fig = px.bar(
     antivirus_data.melt(id_vars='Antivirus Engine', value_vars=['Detected', 'Undetected']),
     x='Antivirus Engine',
