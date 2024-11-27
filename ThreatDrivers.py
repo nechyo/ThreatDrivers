@@ -118,10 +118,11 @@ for ioc in all_data:
     for signer in signature_info:
         signer_name = signature_info.get("signers") if isinstance(signature_info, dict) else "Unknown"
         signer_counts[signer_name] = signer_counts.get(signer_name, 0) + 1
-        vaild_signers = [signer for signer in signature_info.get('signers details', '') if signer.get("status") == "Valid"]
-        
-        vaild_signer_name = vaild_signers[0].get("name") if isinstance(vaild_signers, list) else "Unknown"
-        vaild_signer_counts[vaild_signer_name] = vaild_signer_counts.get(vaild_signer_name, 0) + 1
+        if len(signature_info.get('signers details', '')) >= 1: # 다중 서명
+            if signature_info.get('signers details', '')[0].get("status") == "Valid":
+                vaild_signer = signature_info.get('signers details', '')[0]
+                vaild_signer_name = vaild_signer.get("name") if isinstance(vaild_signer, dict) else "Unknown"
+                vaild_signer_counts[vaild_signer_name] = vaild_signer_counts.get(vaild_signer_name, 0) + 1
 
     # Add file metadata to list
     data_rows.append([sha256, file_type, magic, size, creation_date, last_analysis_date, reputation, tags, detected_count, undetected_count])
