@@ -156,6 +156,7 @@ import_data = pd.DataFrame({
     'Library Name': list(import_counts.keys()),
     'Number of Imports': list(import_counts.values())
 })
+import_data.sort_values(by=['Number of Imports'], axis=0, ascending=False, inplace=True)
 import_fig = px.bar(
     import_data, 
     y='Library Name', 
@@ -173,6 +174,7 @@ signer_data = pd.DataFrame({
     'Signer Name': list(signer_counts.keys()),
     'Number of Signatures': list(signer_counts.values())
 })
+signer_data.sort_values(by=['Number of Signatures'], axis=0, ascending=False, inplace=True)
 signer_fig = px.bar(
     signer_data,
     y='Signer Name',
@@ -184,13 +186,13 @@ signer_fig = px.bar(
 st.plotly_chart(signer_fig)
 
 # Creating a table for valid signers
+st.write("## Valid File Signers Visualization")
 valid_signers_data = pd.DataFrame({
     'Valid Signer Name': list(vaild_signer_counts.keys()),
     'Number of Valid Signatures': list(vaild_signer_counts.values())
 })
 
 valid_signers_data.sort_values(by=['Number of Valid Signatures'], axis=0, ascending=False, inplace=True)
-st.write("## Valid File Signers Visualization")
 valid_signer_fig = px.bar(
     valid_signers_data,
     y='Valid Signer Name',
